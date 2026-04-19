@@ -44,8 +44,11 @@ public class BogTitel implements Subject {
             kunder.add(kunde);
             kunde.addBogtitel(this);
             antal--;
+            this.notifyObservers();
         }
+
     }
+
 
     public void removeKunde(Kunde kunde) {
         if (kunder.contains(kunde)) {
@@ -70,6 +73,9 @@ public class BogTitel implements Subject {
     }
 
     private void notifyObservers() {
+        for (Observer observer : observers){
+            observer.update(this);
+        }
 
     }
 

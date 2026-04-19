@@ -16,7 +16,7 @@ class BogTitelTest {
         // Arrange
         BogTitel bogTitel = new BogTitel("Således talte Zarathrusta", 6);
         Kunde kunde = new Kunde("Jens Jensen");
-        Indkøber indkøber = new Indkøber("Ib inkøbersen");
+        Indkøber indkøber = new Indkøber("Ib Indkøbersen");
         bogTitel.addObserver(indkøber);
 
         // Act
@@ -25,4 +25,23 @@ class BogTitelTest {
         //Assert
         assertEquals(15,bogTitel.getAntal());
     }
+
+    @Test
+    void etKoeb_udenAutomatiskIndkoeb() {
+
+
+        // Arrange
+        BogTitel bogTitel = new BogTitel("Således talte Zarathrusta", 7);
+        Kunde kunde = new Kunde("Jens Jensen");
+        Indkøber indkøber = new Indkøber("Ib Indkøbersen");
+        bogTitel.addObserver(indkøber);
+
+        // Act
+        bogTitel.etKoeb(kunde);
+
+        //Assert
+        assertEquals(6,bogTitel.getAntal());
+    }
+
+
 }
